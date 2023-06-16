@@ -1,10 +1,12 @@
+import Home from "./vews/Home/Home";
 
 
 function App() {
   return (
 
     <>
-      <h1>Poke Dex</h1>
+
+      <Home />
     </>
   );
 }
