@@ -59,5 +59,5 @@ export const useGetPokeData = (url) => {
 
   }, [pokemons]);
 
-  return { pokeDetails, loading, error }
+  return { pokeDetails, loading, error, setPokeDetails }
 }

@@ -1,0 +1,13 @@
+.row:hover * div {
+  opacity: 0.7;
+  transition: all 0.3s ease-in;
+}
+.row :hover > div {
+  transform: scale(1.05);
+  opacity: 1;
+  transition: all 0.3s ease-in;
+}
+
+.row {
+  transition: all 0.3s ease-in;
+}
