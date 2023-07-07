@@ -6,7 +6,9 @@
 .title-pokemon {
   margin-bottom: 3rem;
 }
-
+.title-pokemon::first-letter {
+  text-transform: uppercase;
+}
 .img-detail {
   width: 100%;
   height: auto;
@@ -15,7 +17,8 @@
 .container-detail {
   display: flex;
   justify-content: center;
-  background-color: #5ac2e6;
+
+  background-color: #6f42c1;
   height: 80vh;
   border-radius: 10px;
   font-size: 20px;

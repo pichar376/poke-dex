@@ -1,8 +1,10 @@
+import "./not-found.css";
+
 const NotFound = () => {
   return (
-    <>
-      <h1>NotFound</h1>
-    </>
+    <div className="not-found">
+      <p>Not Found :(</p>
+    </div>
   );
 };
 

@@ -1,22 +1,12 @@
 import { CContainer } from "@coreui/react";
 import PokeList from "../../components/PokeList/PokeList";
+import SearchPokemon from "../../components/SearchPokemon/SearchPokemon";
 
-const Home = ({
-  pokeDetails,
-  loading,
-  error,
-  filteredPokemons,
-  searchPokemon,
-}) => {
+const Home = ({ loading, error }) => {
   return (
     <CContainer style={{ transition: "all .3s ease-in" }}>
-      <PokeList
-        pokeDetails={pokeDetails}
-        loading={loading}
-        error={error}
-        filteredPokemons={filteredPokemons}
-        searchPokemon={searchPokemon}
-      />
+      <SearchPokemon />
+      <PokeList loading={loading} error={error} />
     </CContainer>
   );
 };

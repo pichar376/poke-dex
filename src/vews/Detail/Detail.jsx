@@ -1,22 +1,21 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { CContainer } from "@coreui/react";
+import { CContainer, CImage } from "@coreui/react";
 import "./detail.css";
+import { useSelector } from "react-redux";
 
-const Detail = ({ pokeDetails, loading, error }) => {
+const Detail = () => {
+  const pokeDetails = useSelector((state) => state.pokemonData.pokemons);
   const { id } = useParams();
-  const [pokemonData, setPokemonData] = useState({});
 
   const currentPokemon = pokeDetails.find((el) => el.id == id);
-
-  console.log(currentPokemon);
   return (
     <div className="container-detail">
-      <div className="card-detail-container">
-        <img
+      <figure className="card-detail-container">
+        <CImage
+          fluid
+          className="img-detail"
           src={currentPokemon.sprites.front_default}
-          className="img-detail img-fluid"
-          alt={currentPokemon.name}
         />
         <h1 className="title-pokemon">{currentPokemon.name}</h1>
         <div className="d-flex justify-content-center ">
@@ -35,7 +34,7 @@ const Detail = ({ pokeDetails, loading, error }) => {
             </p>
           </div>
         </div>
-      </div>
+      </figure>
     </div>
   );
 };

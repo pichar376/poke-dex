@@ -7,43 +7,34 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Detail from "./vews/Detail/Detail";
 import NotFound from "./components/NotFound/NotFound";
 import { useGetPokeData } from "./hooks.js/useGetPokeData";
-import SearchPokemon from "./components/SearchPokemon/SearchPokemon";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { setPokemonsActions } from "./features/pokemonData/pokemonDataSlice";
+import { useDispatch } from "react-redux";
+
+
 
 const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=151";
 
 function App() {
 
+  //hook to obtain the data of the details of the pokemons
+  const { pokeDetails, loading, error } = useGetPokeData(apiUrl);
 
-  const { pokeDetails, setPokeDetails, loading, error } = useGetPokeData(apiUrl);
-  const [searchPokemon, setSearchPokemon] = useState("");
+  const dispatch = useDispatch()
 
-  const [filteredPokemons, setFilteredPokemons] = useState(null);
-  const handleSearch = (e) => {
-    setSearchPokemon(e.target.value);
-  };
 
-  const filteredPokemonsByTitle = (itemsToSearch) => {
-    return pokeDetails.filter((el) =>
-      el.name.toLowerCase().includes(itemsToSearch.toLowerCase()));
-  }
-
+  //In this effect the data that comes from the hook of the fetch request of the pokemon data is saved, these will be saved in the redux state with the help of the dispatcher
   useEffect(() => {
-    if (searchPokemon) {
-      setFilteredPokemons(filteredPokemonsByTitle(searchPokemon))
-    }
-  }, [pokeDetails, searchPokemon]);
-
-  console.log(filteredPokemons)
+    dispatch(setPokemonsActions(pokeDetails));
+  }, [pokeDetails]);
   return (
     <BrowserRouter>
-      <Header />
-      <SearchPokemon searchPokemon={searchPokemon} onSearch={handleSearch} />
       <Layout>
+        <Header />
         <Routes>
-          <Route path="/" element={<Home pokeDetails={pokeDetails} loading={loading} error={error} filteredPokemons={filteredPokemons} searchPokemon={searchPokemon} />} />
-          <Route path="detail/:id" element={<Detail pokeDetails={pokeDetails} />} />
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/" element={<Home pokeDetails={pokeDetails} loading={loading} error={error} />} />
+          <Route path="detail/:id" element={<Detail />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>

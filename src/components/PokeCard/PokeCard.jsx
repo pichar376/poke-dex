@@ -1,13 +1,6 @@
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardImage,
-  CCardText,
-  CCardTitle,
-  CCol,
-} from "@coreui/react";
+import { CCard, CCardBody, CCardImage, CCardTitle, CCol } from "@coreui/react";
 import { useNavigate } from "react-router-dom";
+import "./poke-card.css";
 
 const PokeCard = ({ el }) => {
   const navigate = useNavigate();
@@ -20,7 +13,7 @@ const PokeCard = ({ el }) => {
       style={{
         maxWidth: "18rem",
         minWidth: "13rem",
-        height: "350px",
+        height: "300px",
         padding: "0",
         margin: ".5rem",
       }}
@@ -31,18 +24,13 @@ const PokeCard = ({ el }) => {
           padding: "1rem",
           boxShadow: " 3px 3px 5px 0px rgba(0,0,0,0.2)",
         }}
+        onClick={() => {
+          goToDetail(el.id);
+        }}
       >
         <CCardImage orientation="top" src={el.sprites.front_default} />
         <CCardBody style={{ textAlign: "center" }}>
-          <CCardTitle>{el.name}</CCardTitle>
-          <CButton
-            style={{ marginTop: "5px" }}
-            onClick={() => {
-              goToDetail(el.id);
-            }}
-          >
-            details
-          </CButton>
+          <CCardTitle className="title-card">{el.name}</CCardTitle>
         </CCardBody>
       </CCard>
     </CCol>

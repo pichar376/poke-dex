@@ -1,11 +1,7 @@
 import { CContainer } from "@coreui/react";
 
 const Layout = ({ children }) => {
-  return (
-    <CContainer style={{ transition: "all .3s ease-in" }}>
-      {children}
-    </CContainer>
-  );
+  return <CContainer>{children}</CContainer>;
 };
 
 export default Layout;
