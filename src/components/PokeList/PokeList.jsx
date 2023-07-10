@@ -10,6 +10,7 @@ const PokeList = ({ loading, error }) => {
   const pokeDetails = useSelector((state) => state.pokemonData.pokemons);
   const search = useSelector((state) => state.pokemonData.search);
 
+  console.log(pokeDetails);
   //This hook returns a filtered array to us and requires two parameters: the array to filter and the current search for the input.
   const { filteredItems } = useFilter(pokeDetails, search);
 

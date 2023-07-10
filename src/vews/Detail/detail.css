@@ -1,10 +1,9 @@
-.card-detail-container {
+.card-image-container {
   width: 350px;
   height: 350px;
   text-align: center;
 }
 .title-pokemon {
-  margin-bottom: 3rem;
 }
 .title-pokemon::first-letter {
   text-transform: uppercase;
@@ -16,19 +15,21 @@
 
 .container-detail {
   display: flex;
-  justify-content: center;
-
-  background-color: #6f42c1;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
   height: 80vh;
   border-radius: 10px;
   font-size: 20px;
-  color: white;
+  color: #00000090;
 }
 span {
   font-weight: 400;
   font-size: 25px;
+  text-decoration: underline;
 }
 
-.container-info p {
-  margin-bottom: 0.5rem;
+.container-info {
 }

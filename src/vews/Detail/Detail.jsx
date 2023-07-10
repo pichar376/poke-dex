@@ -11,30 +11,28 @@ const Detail = () => {
   const currentPokemon = pokeDetails.find((el) => el.id == id);
   return (
     <div className="container-detail">
-      <figure className="card-detail-container">
+      <figure className="card-image-container">
         <CImage
           fluid
           className="img-detail"
           src={currentPokemon.sprites.front_default}
         />
         <h1 className="title-pokemon">{currentPokemon.name}</h1>
-        <div className="d-flex justify-content-center ">
-          <div className=" container-info d-flex flex-column align-items-start text-center lh-1 mb-0">
-            <p>
-              <span>Weight: </span>
-              {currentPokemon.weight}
-            </p>
-            <p>
-              <span>Height: </span>
-              {currentPokemon.height}
-            </p>
-            <p>
-              <span>Experience: </span>
-              {currentPokemon.base_experience}
-            </p>
-          </div>
-        </div>
       </figure>
+      <div className=" container-info">
+        <p>
+          <span>Weight: </span>
+          {currentPokemon.weight}
+        </p>
+        <p>
+          <span>Height: </span>
+          {currentPokemon.height}
+        </p>
+        <p>
+          <span>Experience: </span>
+          {currentPokemon.base_experience}
+        </p>
+      </div>
     </div>
   );
 };

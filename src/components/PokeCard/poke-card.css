@@ -1,3 +1,6 @@
 .title-card::first-letter {
   text-transform: uppercase;
 }
+.title-card {
+  /* display: absolute; */
+}
