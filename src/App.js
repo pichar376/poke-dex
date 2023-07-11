@@ -32,7 +32,7 @@ function App() {
       <Layout>
         <Header />
         <Routes>
-          <Route path="/" element={<Home pokeDetails={pokeDetails} loading={loading} error={error} />} />
+          <Route path="/" element={<Home loading={loading} error={error} />} />
           <Route path="detail/:id" element={<Detail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

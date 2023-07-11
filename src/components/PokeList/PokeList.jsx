@@ -2,15 +2,34 @@ import { CContainer, CRow, CSpinner } from "@coreui/react";
 import "./poke-list.css";
 import PokeCard from "../PokeCard/PokeCard";
 import NotFound from "../NotFound/NotFound";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { useFilter } from "../../hooks.js/useFilter";
+import Pagination from "../Pagination/Pagination";
 
 const PokeList = ({ loading, error }) => {
   const pokeDetails = useSelector((state) => state.pokemonData.pokemons);
   const search = useSelector((state) => state.pokemonData.search);
 
-  console.log(pokeDetails);
+  const [pokeToRender, setPokeToRender] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(15); // Cantidad de elementos por página
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = pokeDetails.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = (Math.ceil = pokeDetails.length / itemsPerPage);
+
+  useEffect(() => {
+    setPokeToRender(...currentItems);
+  }, [currentPage]);
+
+  console.log(pokeToRender);
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   //This hook returns a filtered array to us and requires two parameters: the array to filter and the current search for the input.
   const { filteredItems } = useFilter(pokeDetails, search);
 
@@ -27,17 +46,17 @@ const PokeList = ({ loading, error }) => {
       console.log(error);
     }
   };
-  //This function will memorize the cards to avoid unnecessary renders and will re-render every time the data of the current pokemons change
+  //This function will memorize the cards to avoid unnecessary renders and will re-render every time th=pokeDetails of the current pokemons change
   const renderPokeListMemo = useMemo(() => {
     try {
-      if (pokeDetails.length > 0) {
-        return pokeDetails?.map((el, id) => <PokeCard key={id} el={el} />);
+      if (currentItems.length > 0) {
+        return currentItems?.map((el, id) => <PokeCard key={id} el={el} />);
       }
     } catch (error) {
       console.log("error in useMemo", error);
     }
     return null;
-  }, [pokeDetails]);
+  }, [currentItems]);
 
   const renderVew = () => {
     if (search) {
@@ -60,6 +79,12 @@ const PokeList = ({ loading, error }) => {
   return (
     <CContainer>
       <CRow>{renderVew()}</CRow>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        itemsPerPage={itemsPerPage}
+      />
     </CContainer>
   );
 };
