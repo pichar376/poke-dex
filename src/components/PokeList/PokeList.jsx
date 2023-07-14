@@ -14,7 +14,7 @@ const PokeList = ({ loading, error }) => {
   const [pokeToRender, setPokeToRender] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(15); // Cantidad de elementos por página
+  const [itemsPerPage] = useState(36); // Cantidad de elementos por página
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -25,7 +25,6 @@ const PokeList = ({ loading, error }) => {
     setPokeToRender(...currentItems);
   }, [currentPage]);
 
-  console.log(pokeToRender);
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -78,13 +77,15 @@ const PokeList = ({ loading, error }) => {
   }
   return (
     <CContainer>
-      <CRow>{renderVew()}</CRow>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        itemsPerPage={itemsPerPage}
-      />
+      <CRow className="d-flex justify-content-center">{renderVew()}</CRow>
+      {renderVew() && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          itemsPerPage={itemsPerPage}
+        />
+      )}
     </CContainer>
   );
 };

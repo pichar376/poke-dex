@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 
 
 
-const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=151";
+const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=216";
 
 function App() {
 
