@@ -11,8 +11,6 @@ const PokeList = ({ loading, error }) => {
   const pokeDetails = useSelector((state) => state.pokemonData.pokemons);
   const search = useSelector((state) => state.pokemonData.search);
 
-  const [pokeToRender, setPokeToRender] = useState([]);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(36); // Cantidad de elementos por página
 
@@ -20,10 +18,6 @@ const PokeList = ({ loading, error }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = pokeDetails.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = (Math.ceil = pokeDetails.length / itemsPerPage);
-
-  useEffect(() => {
-    setPokeToRender(...currentItems);
-  }, [currentPage]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
