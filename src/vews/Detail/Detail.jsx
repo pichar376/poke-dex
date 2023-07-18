@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { CContainer, CImage } from "@coreui/react";
+import { CImage } from "@coreui/react";
 import "./detail.css";
 import { useSelector } from "react-redux";
 
@@ -8,7 +7,8 @@ const Detail = () => {
   const pokeDetails = useSelector((state) => state.pokemonData.pokemons);
   const { id } = useParams();
 
-  const currentPokemon = pokeDetails.find((el) => el.id == id);
+  const currentPokemon = pokeDetails.find((el) => el.id.toString() === id);
+
   return (
     <div className="container-detail">
       <figure className="card-image-container">

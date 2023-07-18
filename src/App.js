@@ -26,7 +26,7 @@ function App() {
   //In this effect the data that comes from the hook of the fetch request of the pokemon data is saved, these will be saved in the redux state with the help of the dispatcher
   useEffect(() => {
     dispatch(setPokemonsActions(pokeDetails));
-  }, [pokeDetails]);
+  }, [pokeDetails, setPokemonsActions]);
   return (
     <BrowserRouter>
       <Layout>

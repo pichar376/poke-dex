@@ -1,14 +1,9 @@
 import React from "react";
-import { CButton, CPagination, CPaginationItem } from "@coreui/react";
+import { CPagination, CPaginationItem } from "@coreui/react";
 import { cilArrowThickToRight, cilArrowThickToLeft } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 
-const Pagination = ({
-  currentPage,
-  totalPages,
-  itemsPerPage,
-  onPageChange,
-}) => {
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
