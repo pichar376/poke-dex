@@ -12,7 +12,7 @@ const PokeList = ({ loading, error }) => {
   const search = useSelector((state) => state.pokemonData.search);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(36); // Cantidad de elementos por página
+  const [itemsPerPage] = useState(36); //elements per page
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -72,7 +72,7 @@ const PokeList = ({ loading, error }) => {
   return (
     <CContainer>
       <CRow className="d-flex justify-content-center">{renderVew()}</CRow>
-      {renderVew() && (
+      {!search && renderVew() && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
