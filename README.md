@@ -1,5 +1,8 @@
-#How to use the app
-You can try the app using this link:poke-dex-redux.netlify.app
+# How to use the app
+
+You can try the app using this link:
+### poke-dex-redux.netlify.app
+
 
 # Getting Started with Create React App
 
